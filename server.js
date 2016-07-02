@@ -14,7 +14,7 @@ var User   = require('./app/models/user'); // get our mongoose model
 // =======================
 // configuration =========
 // =======================
-var port = process.env.OPENSHIFT_NODEJS_PORT || 8080; // used to create, sign, and verify tokens
+var port = process.env.OPENSHIFT_NODEJS_PORT || 3500; // used to create, sign, and verify tokens
 
 // default to a 'localhost' configuration:
 var connection_string = '127.0.0.1:27017/authentication';
@@ -65,6 +65,9 @@ app.get('/setup', function(req, res) {
   });
 });
 
+
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3002);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 // =======================
 // start the server ======
 // =======================
