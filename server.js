@@ -55,6 +55,7 @@ var apiRoutes = express.Router();
 apiRoutes.post('/authenticate', function(req, res) {
 
   res.setHeader('Access-Control-Allow-Origin','*');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   // find the user
   User.findOne({
     name: req.body.name
