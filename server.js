@@ -66,10 +66,6 @@ app.get('/setup', function(req, res) {
 });
 
 
-var server = app.listen(port, ipAddress, function(){
-  console.log('listening');
-});
-
 // =======================
 // start the server ======
 // =======================
