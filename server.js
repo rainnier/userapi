@@ -54,6 +54,7 @@ var apiRoutes = express.Router();
 // route to authenticate a user (POST http://localhost:8080/api/authenticate)
 apiRoutes.post('/authenticate', function(req, res) {
 
+  res.setHeader('Access-Control-Allow-Origin','*');
   // find the user
   User.findOne({
     name: req.body.name
