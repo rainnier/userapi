@@ -15,7 +15,7 @@ var User   = require('./app/models/user'); // get our mongoose model
 // configuration =========
 // =======================
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3500; // used to create, sign, and verify tokens
-
+var ipAddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 // default to a 'localhost' configuration:
 var connection_string = '127.0.0.1:27017/authentication';
 // if OPENSHIFT env variables are present, use the available connection info:
@@ -66,10 +66,14 @@ app.get('/setup', function(req, res) {
 });
 
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3002);
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
+var server = app.listen(port, ipAddress, function(){
+  console.log('listening');
+});
+
 // =======================
 // start the server ======
 // =======================
-app.listen(port);
-console.log('Magic happens at ip:' + port);
+
+var server = app.listen(port, ipAddress, function(){
+  console.log('Magic happens at ' + ipAddress + ":" + port);
+});
