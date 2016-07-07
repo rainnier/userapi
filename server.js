@@ -7,6 +7,9 @@ var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
 var mongoose    = require('mongoose');
 
+var bcrypt = require('bcrypt');
+var SALT_WORK_FACTOR = 10;
+
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
 var User   = require('./app/models/user'); // get our mongoose model
@@ -113,20 +116,49 @@ app.use('/api', apiRoutes);
 
 app.get('/setup', function(req, res) {
 
-  // create a sample user
-  var nick = new User({ 
-    name: 'Nick Cerminara', 
-    password: 'password',
+    var mySchema = User.schema;
+     
+    mySchema.pre('save', function(next){
+        var user = this;
+        if (!user.isModified('password')) return next();
+     
+        bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
+            if(err) return next(err);
+     
+            bcrypt.hash(user.password, salt, function(err, hash){
+                if(err) return next(err);
+     
+                user.password = hash;
+                next();
+            });
+        });
+    });
+     
+    /*var testdata = new  User({
+        name: "admin",
+       password: "test123"
+    });
+     
+    testdata.save(function(err, data){
+        if(err) console.log(err);
+        else console.log ('Sucess:' , data);
+    });*/
+    
+    // create a sample user
+    var rainnier = new User({ 
+    name: 'Rainnier', 
+    password: 'rainnier',
     admin: true 
-  });
+    });
+    
+    // save the sample user
+    rainnier.save(function(err) {
+        if (err) throw err;
+        
+        console.log('User saved successfully');
+        res.json({ success: true });
+    });
 
-  // save the sample user
-  nick.save(function(err) {
-    if (err) throw err;
-
-    console.log('User saved successfully');
-    res.json({ success: true });
-  });
 });
 
 
