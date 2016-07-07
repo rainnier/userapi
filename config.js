@@ -1,6 +1,6 @@
 module.exports = {
 
-    'secret': 'ilovescotchyscotch',
-    'database': 'mongodb://localhost:27017/authentication'
+    'secret': 'aaa',
+    'database': '127.0.0.1:27017/authentication'
 
 };

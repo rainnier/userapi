@@ -17,7 +17,7 @@ var User   = require('./app/models/user'); // get our mongoose model
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3500; // used to create, sign, and verify tokens
 var ipAddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 // default to a 'localhost' configuration:
-var connection_string = '127.0.0.1:27017/authentication';
+var connection_string = config.database;
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
   connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -79,7 +79,7 @@ apiRoutes.post('/authenticate', function(req, res) {
         // if user is found and password is right
         // create a token
         var token = jwt.sign(user, app.get('superSecret'), {
-          expiresIn : 1440 // expires in 24 hours
+          expiresIn : 1440 // expires in 1440 seconds
         });
 
         // return the information including token as JSON
