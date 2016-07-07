@@ -1,6 +1,6 @@
 module.exports = {
 
-    'secret': 'aaa',
+    'secret': 'SINIGANGNAMANOKNAMAYBABOYAT#12PAMPALASANAPINAKULUANNANG5ORASHANGGANGSAMAABOTANGNINANAISNALAMBOT',
     'database': '127.0.0.1:27017/authentication'
 
 };
