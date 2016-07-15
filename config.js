@@ -1,6 +1,7 @@
 module.exports = {
 
     'secret': 'SINIGANGNAMANOKNAMAYBABOYAT#12PAMPALASANAPINAKULUANNANG5ORASHANGGANGSAMAABOTANGNINANAISNALAMBOT',
-    'database': '127.0.0.1:27017/authentication'
+    'database': '127.0.0.1:27017/authentication',
+    'GOOGLE_SECRET': 'hWebd7iWiLPHd1KHI6FnWyO5'
 
 };
