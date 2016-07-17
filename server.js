@@ -6,6 +6,7 @@ var app         = express();
 var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
 var mongoose    = require('mongoose');
+var request = require('request');
 
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
