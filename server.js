@@ -123,7 +123,7 @@ app.use('/api', apiRoutes);
 app.post('/auth/google', function(req, res) {
     
     res.send({ token: 'fake-jwt-token' });
-  /*var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
+  var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
   var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
   var params = {
     code: req.body.code,
@@ -181,7 +181,7 @@ app.post('/auth/google', function(req, res) {
         });
       }
     });
-  });*/
+  });
 });
 
 app.get('/setup', function(req, res) {
