@@ -223,7 +223,7 @@ app.get('/setup', function(req, res) {
     });*/
     
     // create a sample user
-    var rainnier = new User({ 
+    /*var rainnier = new User({ 
     name: 'Erwin', 
     password: 'erwin',
     admin: false 
@@ -235,7 +235,7 @@ app.get('/setup', function(req, res) {
         
         console.log('User saved successfully');
         res.json({ success: true });
-    });
+    });*/
 
 });
 
